@@ -1,84 +1,93 @@
- 			#free-wall {
-				margin: 20px;
-			}
+#free-wall {
+	margin: 20px;
+}
 
-			.brick img {
-				margin: 0;
-				display: block;
-			}
+.brick img {
+	margin: 0;
+	display: block;
+}
 
-			body {
-  				background-image: url("../../images/background-tile.jpg");
-    			background-attachment: fixed;
-			} 
+body {
+	background-image: url("../../images/background-tile.jpg");
+	background-attachment: fixed;
+} 
 
-			.freeWallContainer {
-				margin-top:10%;
-				margin-left:16%;
-				margin-right:16%;
-			}
+/* .freeWallContainer {
+	margin-top:10%;
+	margin-left:16%;
+	margin-right:16%;
+}*/
 
-			.header {
-				color:#665d5d;
-				position:fixed;
-  				top:0;
-  				left:0;
- 				width:100%;
-  				background-image: url("../../images/background-tile.jpg");
-  				z-index:10;
-  				margin-bottom:10%;
-			}
+.freeWallContainer {
+	margin-top:10%;
+	margin-left:16%;
+	margin-right:16%;
+}
 
-			.mainTitle {
-				color:#665d5d;
-	  			padding-left:13%;
-  				padding-top:2%;
-   				font-family: 'FuturaLTW01-Book'; 
-				font-size:30px;
-				float:left;
-				line-height:34px;
-			}
 
-			.otherText {
-				font-family: 'Raleway', sans-serif;
- 				font-size:14px;
-				color:#5e5d5d;
-				font-weight:400;
- 				padding-left:13%; 
- 				padding-top:3%;
-				text-decoration:none;
-				float:left;
-				padding-bottom:3%;
-  			}
 
-			.otherText a {
-				text-decoration:none;
-				color:#5e5d5d;
-			}
+.header {
+	color:#665d5d;
+	position:fixed;
+		top:0;
+		left:0;
+		width:100%;
+		background-image: url("../../images/background-tile.jpg");
+		z-index:10;
+		margin-bottom:10%;
+}
 
- 			.bodyText {
-				font-family: 'DINNextW01-Light';
- 				font-size:16px;
-				color:#5e5d5d;
-				font-weight:400;
- 				margin-left:20%;
-				margin-right:26%;
-				padding-top:11%;
-				line-height:18px;
-				clear:both;
-			}
+.mainTitle {
+	color:#665d5d;
+		padding-left:13%;
+		padding-top:2%;
+		font-family: 'Questrial', sans-serif; 
+	font-size:33px;
 
-			.bodyText a {
-				text-decoration:none;
-				color:#5e5d5d;
-			}
+	float:left;
+	line-height:34px;
+}
 
-			.emailText {
-				font-family: 'FuturaLTW01-Book'; 
- 				font-size:18px;
-				color:#5e5d5d;
-				font-weight:400;
- 				text-align:center;
-				padding-top:220px;
-				line-height:18px;
-			}
+.otherText {
+	font-family: 'Questrial', sans-serif; 
+	font-size:15px;
+	color:#5e5d5d;
+	font-weight:400;
+	padding-left:13%; 
+	padding-top:3%;
+	text-decoration:none;
+	float:left;
+	padding-bottom:3%;
+	}
+
+.otherText a {
+	text-decoration:none;
+	color:#5e5d5d;
+}
+
+	.bodyText {
+	font-family: 'Questrial', sans-serif; 
+		font-size:16px;
+	color:#5e5d5d;
+	font-weight:400;
+		margin-left:20%;
+	margin-right:26%;
+	padding-top:11%;
+	line-height:19px;
+	clear:both;
+}
+
+.bodyText a {
+	text-decoration:none;
+	color:#5e5d5d;
+}
+
+.emailText {
+	font-family: 'Questrial', sans-serif; 
+		font-size:22px;
+	color:#5e5d5d;
+	font-weight:400;
+		text-align:center;
+	padding-top:220px;
+	line-height:18px;
+}
