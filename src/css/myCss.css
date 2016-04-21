@@ -20,57 +20,59 @@ body {
 
 .freeWallContainer {
 	margin-top:10%;
-	margin-left:16%;
+ 	margin-left:16%;
 	margin-right:16%;
 }
-
-
 
 .header {
 	color:#665d5d;
 	position:fixed;
-		top:0;
-		left:0;
-		width:100%;
-		background-image: url("../../images/background-tile.jpg");
-		z-index:10;
-		margin-bottom:10%;
+	top:0;
+	left:0;
+	width:100%;
+	background-image: url("../../images/background-tile.jpg");
+	z-index:10;
+	margin-bottom:6%;
+	padding-bottom:6%;
+	padding-top:2%;
 }
 
 .mainTitle {
 	color:#665d5d;
-		padding-left:13%;
-		padding-top:2%;
-		font-family: 'Questrial', sans-serif; 
+	padding-left:13%;
+	font-family: 'Questrial', sans-serif; 
 	font-size:33px;
-
 	float:left;
 	line-height:34px;
 }
 
-.otherText {
+.subTitle {
+	font-size:28px;
+}
+
+.smallMenuText {
 	font-family: 'Questrial', sans-serif; 
 	font-size:15px;
 	color:#5e5d5d;
 	font-weight:400;
-	padding-left:13%; 
-	padding-top:3%;
-	text-decoration:none;
+	padding-left:42%; 
+ 	text-decoration:none;
 	float:left;
-	padding-bottom:3%;
-	}
+	line-height:39px;
+}
 
-.otherText a {
+.smallMenuText a {
 	text-decoration:none;
 	color:#5e5d5d;
 }
 
-	.bodyText {
+
+.bodyText {
 	font-family: 'Questrial', sans-serif; 
-		font-size:16px;
+	font-size:16px;
 	color:#5e5d5d;
 	font-weight:400;
-		margin-left:20%;
+	margin-left:20%;
 	margin-right:26%;
 	padding-top:11%;
 	line-height:19px;
@@ -84,10 +86,197 @@ body {
 
 .emailText {
 	font-family: 'Questrial', sans-serif; 
-		font-size:22px;
+	font-size:22px;
 	color:#5e5d5d;
 	font-weight:400;
-		text-align:center;
+	text-align:center;
 	padding-top:220px;
 	line-height:18px;
+}
+
+
+/* styles for the drop-down menu */
+/*Strip the ul of padding and list styling*/
+ul {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	position: absolute;
+}
+
+/*Create a horizontal list with spacing*/
+li {
+	display:inline-block;
+	margin-right: 1px;
+ 	text-decoration: none;
+}
+
+/*Style for menu links*/
+li a {
+	display:block;
+	min-width:140px;
+	padding-left:70px;
+  	text-decoration: none;
+  	 
+}
+
+/*Hover state for top level links*/
+li:hover a {
+ 	font-weight:bold;
+	
+}
+
+/*Prevent text wrapping*/
+li ul li a {
+	width: auto;
+	min-width: 100px;
+	padding: 0 20px;
+}
+
+ 
+/*Style 'show menu' label button and hide it by default*/
+.show-menu {
+ 	text-decoration: none;
+	display: none;
+	background-image: url("../img/list-128.png");
+	background-repeat: no-repeat;
+	width:100px;
+	height:100px;
+	padding-bottom:5px;
+	text-align:right;
+	opacity:0.5;
+}
+
+/*Hide checkbox*/
+input[type=checkbox]{
+    display: none;
+}
+
+/*Show menu when invisible checkbox is checked*/
+input[type=checkbox]:checked ~ #menu{
+    display: block;
+   
+}
+
+/*Show menu when invisible checkbox is checked*/
+input[type=checkbox]: ~ #menu{
+    display: block;
+ }
+
+
+
+/*Responsive Styles*/
+@media screen and (max-width : 1120px){
+	/*Make dropdown links appear inline*/
+	ul {
+		display: none;
+	}
+	/*Create vertical spacing*/
+	li {
+		margin-bottom: 1px;
+		display: block;
+	}
+	li a {
+	display:block;
+	min-width:auto;
+	padding-left:0px;
+  	text-decoration: none;
+  	 
+	}
+	/*Make all menu links full width*/
+	ul li, li a {
+		
+	}
+	/*Display 'show menu' link*/
+	/* position and styling of hamburger in small view*/
+	.show-menu {
+		display:block;
+		float:right;
+		padding-left:20px;
+		position:relative;
+	}
+
+
+	/* position and styling of menu in small view*/
+	#menu {
+		margin-top:100px;	
+		margin-left:70%;
+		padding-left:10px;
+		padding-right:10px;
+		position:absolute;
+		 /* border: 1px solid #665d5d; */
+		 background-color:white;
+		 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	}
+
+	ul {
+	list-style-type:none;
+	position:absolute;
+	margin:auto;
+	padding:auto;
+	}
+
+	.smallMenuText {
+	font-family: 'Questrial', sans-serif; 
+	font-size:45px;
+	color:#5e5d5d;
+	font-weight:400;
+	line-height:100px;
+	text-decoration:none;
+}
+
+	.smallMenuText a {
+		text-decoration:none;
+		color:#5e5d5d;
+	}
+
+	/* change freewall width? */
+	.freeWallContainer {
+		margin-top:18%;
+ 		margin-left:6%;
+		margin-right:6%;
+	}	
+
+	/* change name size */
+	.mainTitle {
+ 		color:#665d5d;
+		padding-left:5%;
+		font-family: 'Questrial', sans-serif; 
+		font-size:73px;
+		margin-top:3%;
+ 	}
+
+	.subTitle {
+		font-size:63px;
+	}
+
+	.bodyText {
+	font-family: 'Questrial', sans-serif; 
+	font-size:42px;
+	color:#5e5d5d;
+	font-weight:400;
+	margin-left:10%;
+	margin-right:10%;
+	padding-top:11%;
+	line-height:44px;
+	clear:both;
+	}
+
+
+	.emailText {
+	font-family: 'Questrial', sans-serif; 
+	font-size:50px;
+	color:#5e5d5d;
+	font-weight:400;
+	text-align:center;
+	padding-top:220px;
+	line-height:50px;
+	}
+
+
+}
+
+
+.menuHolder {
+ 
 }

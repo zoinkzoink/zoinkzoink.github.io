@@ -28,8 +28,14 @@ html.swipebox-html.swipebox-touch {
 }
 
 #swipebox-slider {
+  /*
   -webkit-transition: -webkit-transform 0.4s ease;
           transition: transform 0.4s ease;
+  */
+   -webkit-transition: none;
+    transition: none;
+  
+
   height: 100%;
   left: 0;
   top: 0;
@@ -45,7 +51,18 @@ html.swipebox-html.swipebox-touch {
   line-height: 1px;
   text-align: center;
   display: inline-block;
+   -webkit-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+ 
 }
+
+/* added this:
+
+*/
+#swipebox-slider .slide:not(.current) {
+    opacity: 0;
+}
+
 #swipebox-slider .slide:before {
   content: "";
   display: inline-block;
@@ -92,20 +109,29 @@ html.swipebox-html.swipebox-touch {
   background: url(../img/loader.gif) no-repeat center center;
 }
 
-
-
 #swipebox-bottom-bar {
   /* bottom: 50px; */
+  /* to center vertically: */
   position: relative;
-    top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+    top: 5%;
+  -webkit-transform: translateY(-5%);
+  -ms-transform: translateY(-5%);
+  transform: translateY(-5%);
+
+  /* fade-in transform */
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+    -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
 }
 
 #swipebox-bottom-bar.visible-bars {
-  /*-webkit-transform: translate3d(0, -50px, 0);
+ /*-webkit-transform: translate3d(0, -50px, 0);
           transform: translate3d(0, -50px, 0); */
+  -webkit-opacity: 0.9;
+  -moz-opacity: 0.9;
+  opacity: 0.9;
 }
 
 /*
@@ -146,6 +172,9 @@ html.swipebox-html.swipebox-touch {
   width: 50px;
   height: 50px;
   top: 0;
+    -webkit-opacity: 0.5;
+  -moz-opacity: 0.5;
+  opacity: 0.5;
 }
 
 #swipebox-arrows {
@@ -309,10 +338,10 @@ html.swipebox-html.swipebox-touch {
 }
 
 #swipebox-top-bar {
-  color: #adadad !important;
-  font-size: 13px;
+   font-size: 13px;
   line-height: 43px;
   font-family: Arial, sans-serif;
+  color:#939393;
 }
 
 .top-bar-subtitle {
@@ -326,4 +355,14 @@ html.swipebox-html.swipebox-touch {
     #swipebox-top-bar {
         display: none;
     }
+}
+
+/* make height taller on mobile portrait view */
+
+@media screen and (max-width : 1120px){
+
+  #swipebox-overlay {
+    height:100% !important;
+  }
+
 }

@@ -266,11 +266,15 @@
 			/**
 			 * Check if CSS transitions are allowed (options + devicesupport)
 			 */
+			
 			doCssTrans : function () {
 				if ( plugin.settings.useCSS && this.supportTransition() ) {
 					return true;
 				}
-			},
+			 },
+		 
+
+			 
 
 			/**
 			 * Touch navigation
@@ -304,10 +308,19 @@
 					startCoords.pageX = event.originalEvent.targetTouches[0].pageX;
 					startCoords.pageY = event.originalEvent.targetTouches[0].pageY;
 
+
+					// I changed this:
+					//$( '#swipebox-slider' ).css( {
+					//	'-webkit-transform' : 'translate3d(' + currentX +'%, 0, 0)',
+					//	'transform' : 'translate3d(' + currentX + '%, 0, 0)'
+					//} );
+
 					$( '#swipebox-slider' ).css( {
-						'-webkit-transform' : 'translate3d(' + currentX +'%, 0, 0)',
-						'transform' : 'translate3d(' + currentX + '%, 0, 0)'
+						'-webkit-transform' : 'none',
+						'transform' : 'none'
 					} );
+
+
 
 					$( '.touching' ).bind( 'touchmove',function( event ) {
 						event.preventDefault();
@@ -333,8 +346,8 @@
 
 						if ( ! hSwipe && ! vSwipe && Math.abs( hDistance ) >= hSwipMinDistance ) {
 							$( '#swipebox-slider' ).css( {
-								'-webkit-transition' : '',
-								'transition' : ''
+								'-webkit-transition' : 'none',
+								'transition' : 'none'
 							} );
 							hSwipe = true;
 						}
@@ -382,9 +395,15 @@
 					event.preventDefault();
 					event.stopPropagation();
 
+					//$( '#swipebox-slider' ).css( {
+					//	'-webkit-transition' : '-webkit-transform 0.4s ease',
+					//	'transition' : 'transform 0.4s ease'
+					//} );
+
+					// I changed this:
 					$( '#swipebox-slider' ).css( {
-						'-webkit-transition' : '-webkit-transform 0.4s ease',
-						'transition' : 'transform 0.4s ease'
+						'-webkit-transition' : '-webkit-transform 0s ease',
+						'transition' : '-webkit-transform 0s ease'
 					} );
 
 					vDistance = endCoords.pageY - startCoords.pageY;
