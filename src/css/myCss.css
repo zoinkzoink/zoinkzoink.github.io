@@ -1,28 +1,7 @@
-#free-wall {
-	margin: 20px;
-}
-
-.brick img {
-	margin: 0;
-	display: block;
-}
-
 body {
 	background-image: url("../../images/background-tile.jpg");
 	background-attachment: fixed;
 } 
-
-/* .freeWallContainer {
-	margin-top:10%;
-	margin-left:16%;
-	margin-right:16%;
-}*/
-
-.freeWallContainer {
-	margin-top:10%;
- 	margin-left:16%;
-	margin-right:16%;
-}
 
 .header {
 	color:#665d5d;
@@ -32,10 +11,38 @@ body {
 	width:100%;
 	background-image: url("../../images/background-tile.jpg");
 	z-index:10;
-	margin-bottom:6%;
-	padding-bottom:6%;
-	padding-top:2%;
+	margin-bottom:50px;
+ 	padding-top:25px;
 }
+
+/* .freeWallContainer {
+	margin-top:10%;
+	margin-left:16%;
+	margin-right:16%;
+}*/
+
+.freeWallContainer {
+	margin-top:100px;
+ 	margin-left:16%;
+	margin-right:16%;
+	max-width:900px;
+}
+
+.container {
+	margin-top:100px;
+  
+}
+
+
+#free-wall {
+	margin: 20px;
+}
+
+.brick img {
+	margin: 0;
+	display: block;
+}
+
 
 .mainTitle {
 	color:#665d5d;
@@ -50,6 +57,8 @@ body {
 	font-size:28px;
 }
 
+ 
+
 .smallMenuText {
 	font-family: 'Questrial', sans-serif; 
 	font-size:15px;
@@ -57,8 +66,8 @@ body {
 	font-weight:400;
 	padding-left:42%; 
  	text-decoration:none;
-	float:left;
-	line-height:39px;
+ 	line-height:39px;
+ 	margin-right:80px;
 }
 
 .smallMenuText a {
@@ -95,24 +104,23 @@ body {
 }
 
 
+
 /* styles for the drop-down menu */
 /*Strip the ul of padding and list styling*/
-ul {
+.menuHolder ul {
 	list-style-type:none;
 	margin:0;
-	padding:0;
-	position: absolute;
-}
+  }
 
 /*Create a horizontal list with spacing*/
-li {
+.menuHolder li {
 	display:inline-block;
 	margin-right: 1px;
  	text-decoration: none;
-}
+  }
 
 /*Style for menu links*/
-li a {
+.menuHolder li a {
 	display:block;
 	min-width:140px;
 	padding-left:70px;
@@ -121,13 +129,13 @@ li a {
 }
 
 /*Hover state for top level links*/
-li:hover a {
+.menuHolder li:hover a {
  	font-weight:bold;
 	
 }
 
 /*Prevent text wrapping*/
-li ul li a {
+.menuHolder li ul li a {
 	width: auto;
 	min-width: 100px;
 	padding: 0 20px;
@@ -164,19 +172,31 @@ input[type=checkbox]: ~ #menu{
  }
 
 
+/* Responsive style for floating window */
+@media screen and (max-width : 1120px){  
+	.mainTitle {
+		padding-left:10%;
+	}
+}
+ 
+@media screen and (max-width : 900px){  
 
-/*Responsive Styles*/
-@media screen and (max-width : 1120px){
+	/* left-align name */
+.mainTitle {
+ 	padding-left:5%;
+  
+}
+
 	/*Make dropdown links appear inline*/
-	ul {
+	.menuHolder ul {
 		display: none;
 	}
 	/*Create vertical spacing*/
-	li {
+	.menuHolder li {
 		margin-bottom: 1px;
 		display: block;
 	}
-	li a {
+	.menuHolder li a {
 	display:block;
 	min-width:auto;
 	padding-left:0px;
@@ -184,32 +204,42 @@ input[type=checkbox]: ~ #menu{
   	 
 	}
 	/*Make all menu links full width*/
-	ul li, li a {
+	.menuHolder ul li, .menuHolder li a {
 		
 	}
 	/*Display 'show menu' link*/
 	/* position and styling of hamburger in small view*/
 	.show-menu {
-		display:block;
-		float:right;
-		padding-left:20px;
-		position:relative;
+	    display: block;
+    float: right;
+    padding-left: 0px;
+    position: relative;
+    background-image: url("../img/list-40.png");
+    background-repeat: no-repeat;
+    background-position: 60px 0px;
+    width: 120px;
+    height: 40px;
 	}
 
+ 	.menuHolder {
+ 		float:right;
+ 		padding-right:0px;
+ 	}
 
-	/* position and styling of menu in small view*/
+	/* position and styling of menu in floating view*/
 	#menu {
-		margin-top:100px;	
-		margin-left:70%;
-		padding-left:10px;
+		margin-top:40px;
+  		padding-left:10px;
 		padding-right:10px;
 		position:absolute;
+	 
 		 /* border: 1px solid #665d5d; */
 		 background-color:white;
-		 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	}
+		 box-shadow: 0px 16px 32px 0px rgba(0,0,0,0.2);
+ 	}
 
-	ul {
+
+	.menuHolder ul {
 	list-style-type:none;
 	position:absolute;
 	margin:auto;
@@ -218,65 +248,17 @@ input[type=checkbox]: ~ #menu{
 
 	.smallMenuText {
 	font-family: 'Questrial', sans-serif; 
-	font-size:45px;
+	font-size:18px;
 	color:#5e5d5d;
 	font-weight:400;
-	line-height:100px;
+	line-height:38px;
 	text-decoration:none;
+	margin-right:10px;
 }
 
 	.smallMenuText a {
 		text-decoration:none;
 		color:#5e5d5d;
 	}
-
-	/* change freewall width? */
-	.freeWallContainer {
-		margin-top:18%;
- 		margin-left:6%;
-		margin-right:6%;
-	}	
-
-	/* change name size */
-	.mainTitle {
- 		color:#665d5d;
-		padding-left:5%;
-		font-family: 'Questrial', sans-serif; 
-		font-size:73px;
-		margin-top:3%;
- 	}
-
-	.subTitle {
-		font-size:63px;
-	}
-
-	.bodyText {
-	font-family: 'Questrial', sans-serif; 
-	font-size:42px;
-	color:#5e5d5d;
-	font-weight:400;
-	margin-left:10%;
-	margin-right:10%;
-	padding-top:11%;
-	line-height:44px;
-	clear:both;
-	}
-
-
-	.emailText {
-	font-family: 'Questrial', sans-serif; 
-	font-size:50px;
-	color:#5e5d5d;
-	font-weight:400;
-	text-align:center;
-	padding-top:220px;
-	line-height:50px;
-	}
-
-
-}
-
-
-.menuHolder {
  
 }
