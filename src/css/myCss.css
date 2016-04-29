@@ -11,70 +11,57 @@ body {
 	width:100%;
 	background-image: url("../../images/background-tile.jpg");
 	z-index:10;
-	margin-bottom:50px;
  	padding-top:25px;
+ 	padding-bottom:25px;
+ 	padding-left:9px;
+ 	padding-right:9px;
 }
 
-/* .freeWallContainer {
-	margin-top:10%;
-	margin-left:16%;
-	margin-right:16%;
-}*/
-
-.freeWallContainer {
-	margin-top:100px;
- 	margin-left:16%;
-	margin-right:16%;
-	max-width:900px;
+#headerWrangler {
+	 	max-width:55em;
+ 		position:relative;
+		margin:0px auto;
 }
-
+	
 .container {
-	margin-top:100px;
-  
+	margin-top:63px;
+	padding-top:1px;
 }
-
-
-#free-wall {
-	margin: 20px;
-}
-
-.brick img {
-	margin: 0;
-	display: block;
-}
-
 
 .mainTitle {
 	color:#665d5d;
-	padding-left:13%;
 	font-family: 'Questrial', sans-serif; 
 	font-size:33px;
 	float:left;
-	line-height:34px;
+ 	line-height:34px;
+ 	padding-left:5px;
 }
 
 .subTitle {
 	font-size:28px;
 }
 
- 
+
+.menuHolder {
+
+	/* border:1px solid red; */
+	float:right;
+
+}
 
 .smallMenuText {
 	font-family: 'Questrial', sans-serif; 
 	font-size:15px;
 	color:#5e5d5d;
 	font-weight:400;
-	padding-left:42%; 
- 	text-decoration:none;
+  	text-decoration:none;
  	line-height:39px;
- 	margin-right:80px;
-}
+ }
 
 .smallMenuText a {
 	text-decoration:none;
 	color:#5e5d5d;
 }
-
 
 .bodyText {
 	font-family: 'Questrial', sans-serif; 
@@ -95,7 +82,7 @@ body {
 
 .emailText {
 	font-family: 'Questrial', sans-serif; 
-	font-size:22px;
+	font-size:22px;lder
 	color:#5e5d5d;
 	font-weight:400;
 	text-align:center;
@@ -146,10 +133,10 @@ body {
 .show-menu {
  	text-decoration: none;
 	display: none;
-	background-image: url("../img/list-128.png");
+	background-image: url("../img/list-40.png");
 	background-repeat: no-repeat;
-	width:100px;
-	height:100px;
+	width:40px;
+	height:40px;
 	padding-bottom:5px;
 	text-align:right;
 	opacity:0.5;
@@ -172,20 +159,11 @@ input[type=checkbox]: ~ #menu{
  }
 
 
-/* Responsive style for floating window */
-@media screen and (max-width : 1120px){  
-	.mainTitle {
-		padding-left:10%;
-	}
-}
+ 
  
 @media screen and (max-width : 900px){  
 
-	/* left-align name */
-.mainTitle {
- 	padding-left:5%;
-  
-}
+ 
 
 	/*Make dropdown links appear inline*/
 	.menuHolder ul {
@@ -210,15 +188,15 @@ input[type=checkbox]: ~ #menu{
 	/*Display 'show menu' link*/
 	/* position and styling of hamburger in small view*/
 	.show-menu {
-	    display: block;
+	display: inline;
     float: right;
-    padding-left: 0px;
+    padding-right: 10px;
     position: relative;
     background-image: url("../img/list-40.png");
     background-repeat: no-repeat;
-    background-position: 60px 0px;
-    width: 120px;
+     width: 40px;
     height: 40px;
+ 
 	}
 
  	.menuHolder {
@@ -228,20 +206,20 @@ input[type=checkbox]: ~ #menu{
 
 	/* position and styling of menu in floating view*/
 	#menu {
-		margin-top:40px;
   		padding-left:10px;
 		padding-right:10px;
-		position:absolute;
-	 
+	 	position:fixed;
+	 	margin-top:40px;
+
 		 /* border: 1px solid #665d5d; */
 		 background-color:white;
 		 box-shadow: 0px 16px 32px 0px rgba(0,0,0,0.2);
+		 right:15px;
  	}
 
 
 	.menuHolder ul {
 	list-style-type:none;
-	position:absolute;
 	margin:auto;
 	padding:auto;
 	}
@@ -261,4 +239,18 @@ input[type=checkbox]: ~ #menu{
 		color:#5e5d5d;
 	}
  
+}
+
+
+@media screen and (max-width : 300px){  
+
+.show-menu {
+
+	display:none;
+}
+
+.menuHolder {
+	display:none;
+}
+
 }
