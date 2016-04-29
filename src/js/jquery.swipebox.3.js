@@ -4,9 +4,6 @@
 
 	$.swipebox = function( elem, options ) {
 
-		// I added this:
-		console.log("Hello");
-
 		// Default options
 		var ui,
 			defaults = {
@@ -25,6 +22,7 @@
 				nextSlide: null,
 				prevSlide: null,
 				loopAtEnd: false,
+				loopAtStart: false,
 				autoplayVideos: false,
 				queryStringData: {},
 				toggleClassOnLoad: ''
@@ -56,6 +54,7 @@
 						<a id="swipebox-close"></a>\
 					</div>\
 			</div>';
+
 
 		plugin.settings = {};
 
@@ -183,6 +182,8 @@
 				if ( isMobile && plugin.settings.removeBarsOnMobile ) {
 					$( '#swipebox-bottom-bar, #swipebox-top-bar' ).remove();
 				}
+
+				
 
 				$.each( elements,  function() {
 					$( '#swipebox-slider' ).append( '<div class="slide"></div>' );
@@ -882,7 +883,6 @@
 			 */
 			getPrev : function () {
 
-				console.log("calling getPrev()");
 				var $this = this,
 					src,
 				index = $( '#swipebox-slider .slide' ).index( $( '#swipebox-slider .slide.current' ) ),
@@ -890,7 +890,9 @@
 				
 
 				if ( index == 0 ) {
-					console.log("We are at the first slide, trying to go back.");
+
+					if (plugin.settings.loopAtStart === true) {
+
 						src = $( '#swipebox-slider .slide' ).eq( index ).contents().find( 'iframe' ).attr( 'src' );
 						$( '#swipebox-slider .slide' ).eq( index ).contents().find( 'iframe' ).attr( 'src', src );
 						
@@ -902,6 +904,7 @@
 						if ( plugin.settings.nextSlide ) {
 							plugin.settings.nextSlide(index);
 						}
+					};
 
 				};
 

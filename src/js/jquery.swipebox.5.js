@@ -4,9 +4,6 @@
 
 	$.swipebox = function( elem, options ) {
 
-		// I added this:
-		console.log("Hello");
-
 		// Default options
 		var ui,
 			defaults = {
@@ -25,6 +22,7 @@
 				nextSlide: null,
 				prevSlide: null,
 				loopAtEnd: false,
+				loopAtStart: false,
 				autoplayVideos: false,
 				queryStringData: {},
 				toggleClassOnLoad: ''
@@ -56,6 +54,10 @@
 						<a id="swipebox-close"></a>\
 					</div>\
 			</div>';
+
+
+		console.log("winWidth: " + winWidth);
+
 
 		plugin.settings = {};
 
@@ -119,8 +121,8 @@
 						var title = null,
 							href = null;
 
-						if ( $( this ).attr( 'title' ) ) {
-							title = $( this ).attr( 'title' );
+						if ( $( this ).attr( 'title2' ) ) {
+							title = $( this ).attr( 'title2' );
 						}
 
 
@@ -181,6 +183,12 @@
 				}
 
 				if ( isMobile && plugin.settings.removeBarsOnMobile ) {
+					$( '#swipebox-bottom-bar, #swipebox-top-bar' ).remove();
+				}
+
+				// I added this:
+				// for floating windows, don't add the bars to begin with.
+				if (winWidth < 1214) {
 					$( '#swipebox-bottom-bar, #swipebox-top-bar' ).remove();
 				}
 
@@ -247,6 +255,20 @@
 
 				$( window ).resize( function() {
 					$this.setDim();
+					// reset winWidth
+					winWidth = window.innerWidth ? window.innerWidth : $( window ).width();
+					console.log("winWidth reset to: " + winWidth);
+					
+					if (winWidth < 1214) {
+				       $( '#swipebox-top-bar' ).hide();
+				       console.log("hiding caption");
+					};
+
+					if (winWidth >= 1214) {
+				       $( '#swipebox-top-bar' ).show();
+				       console.log("re-adding caption");
+					};
+
 				} ).resize();
 			},
 
@@ -717,9 +739,17 @@
 					title = elements[ index ].title;
 				}
 
+ 
 				if ( title ) {
-					$( '#swipebox-top-bar' ).show();
+					// I added:		
 					$( '#swipebox-title' ).append( title );
+
+					if (winWidth > 1213) {
+						// show it only if at certain width
+						console.log("winWidth > 1213; adding title");
+						$( '#swipebox-top-bar' ).show();
+						
+					}
 				} else {
 					$( '#swipebox-top-bar' ).hide();
 				}
@@ -882,7 +912,6 @@
 			 */
 			getPrev : function () {
 
-				console.log("calling getPrev()");
 				var $this = this,
 					src,
 				index = $( '#swipebox-slider .slide' ).index( $( '#swipebox-slider .slide.current' ) ),
@@ -890,7 +919,9 @@
 				
 
 				if ( index == 0 ) {
-					console.log("We are at the first slide, trying to go back.");
+
+					if (plugin.settings.loopAtStart === true) {
+
 						src = $( '#swipebox-slider .slide' ).eq( index ).contents().find( 'iframe' ).attr( 'src' );
 						$( '#swipebox-slider .slide' ).eq( index ).contents().find( 'iframe' ).attr( 'src', src );
 						
@@ -902,6 +933,7 @@
 						if ( plugin.settings.nextSlide ) {
 							plugin.settings.nextSlide(index);
 						}
+					};
 
 				};
 
