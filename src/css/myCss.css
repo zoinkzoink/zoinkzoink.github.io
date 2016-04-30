@@ -163,10 +163,10 @@ input[type=checkbox]: ~ #menu{
  
 @media screen and (max-width : 900px){  
 
- 	/* hide swipebox captions */
+ 	/* hide swipebox captions 
  	 #swipebox-top-bar {
  		display:none;
- 	}
+ 	}*/
 
 	/*Make dropdown links appear inline*/
 	.menuHolder ul {
