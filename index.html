@@ -9,15 +9,14 @@
  		<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="src/css/swipebox.2.css">
 		<link rel="stylesheet" href="src/css/myCss.css">
+
 		<!-- Masonry css -->
 		<link rel="stylesheet" type="text/css" href="src/css/default.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/component.css" />
-
  		<link href='https://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
  		<link href='https://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-		
-		<script src="src/js/jquery.swipebox.5.js"></script>	
+		<script src="src/js/jquery.swipebox.6.js"></script>	
 
 		<!-- Masonry scripts -->
 		<script src="src/js/modernizr.custom.js"></script>
@@ -25,23 +24,26 @@
 		<script src="src/js/imagesloaded.js"></script>
 		<script src="src/js/classie.js"></script>
 		<script src="src/js/AnimOnScroll.js"></script>
-
-		<script type="text/javascript">
-
-			// hide hover titles
-			$( document ).ready(function() {
-
-
-
-			});
-
-     			
-
- 		</script>
-
+ 
 	</head>
 
-	<body>
+<!-- Preloader -->
+<script type="text/javascript">
+    //<![CDATA[
+        $(window).load(function() { // makes sure the whole site is loaded
+            $('#status').fadeOut(); // will first fade out the loading animation
+            $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+            $('body').delay(350).css({'overflow':'visible'});
+        })
+    //]]>
+</script>
+
+<body>
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+
 	<div class="header" >
 			<div id="headerWrangler">
 
@@ -90,7 +92,7 @@
 			$("#grid").html(html);
  
 
-	// init Masonry
+		// init Masonry
 		new AnimOnScroll( document.getElementById( 'grid' ), {
 				minDuration : 0.4,
 				maxDuration : 0.7,
@@ -102,15 +104,9 @@
 		<script type="text/javascript">
 			// init swipebox
 			;( function( $ ) {
-				$( '.swipebox' ).swipebox( {loopAtEnd: true, loopAtStart: true});
+				$( '.swipebox' ).swipebox( {loopAtEnd: true, loopAtStart: true, maxWidthForCaptions: 900});
 			} )( jQuery );
 		</script>
  
- 		<script type = "text/javascript">
- 		
- 			
-
- 		</script>
-
 	</body>
 </html>

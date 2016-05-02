@@ -14,6 +14,7 @@
 				hideCloseButtonOnMobile : false,
 				hideBarsDelay : 3000,
 				videoMaxWidth : 1140,
+				maxWidthForCaptions : 900,
 				vimeoColor : 'cccccc',
 				beforeOpen: null,
 				afterOpen: null,
@@ -121,8 +122,8 @@
 						var title = null,
 							href = null;
 
-						if ( $( this ).attr( 'title' ) ) {
-							title = $( this ).attr( 'title' );
+						if ( $( this ).attr( 'title2' ) ) {
+							title = $( this ).attr( 'title2' );
 						}
 
 
@@ -187,9 +188,9 @@
 				}
 
 				// I added this:
-				// for floating windows, don't add the bars to begin with.
-				if (winWidth < 1214) {
-					$( '#swipebox-bottom-bar, #swipebox-top-bar' ).remove();
+				// for floating windows, don't add the captions to begin with.
+				if (winWidth < 1100) {
+					$( '#swipebox-top-bar' ).remove();
 				}
 
 				$.each( elements,  function() {
@@ -259,12 +260,12 @@
 					winWidth = window.innerWidth ? window.innerWidth : $( window ).width();
 					console.log("winWidth reset to: " + winWidth);
 					
-					if (winWidth < 1214) {
+					if (winWidth < plugin.settings.maxWidthForCaptions) {
 				       $( '#swipebox-top-bar' ).hide();
 				       console.log("hiding caption");
 					};
 
-					if (winWidth >= 1214) {
+					if (winWidth >= plugin.settings.maxWidthForCaptions) {
 				       $( '#swipebox-top-bar' ).show();
 				       console.log("re-adding caption");
 					};
@@ -744,9 +745,9 @@
 					// I added:		
 					$( '#swipebox-title' ).append( title );
 
-					if (winWidth > 1213) {
+					if (winWidth > plugin.settings.maxWidthForCaptions) {
 						// show it only if at certain width
-						console.log("winWidth > 1213; adding title");
+						console.log("winWidth > 1100; adding title");
 						$( '#swipebox-top-bar' ).show();
 						
 					}
