@@ -207,6 +207,15 @@ input[type=checkbox]: ~ #menu{
  		display:none;
  	}*/
 
+ 	#splash_image {
+	width:100%; 
+	max-width:55em;
+	margin:auto;
+	padding-left:7px;
+	padding-right:7px;
+	padding-top:25px;
+	}
+
 	/*Make dropdown links appear inline*/
 	.menuHolder ul {
 		display: none;
