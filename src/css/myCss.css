@@ -5,6 +5,15 @@ body {
 
 /* Preloader */
 
+#splash_image {
+	width:100%; 
+	max-width:55em;
+	margin:auto;
+	padding-left:7px;
+	padding-right:16px;
+	padding-top:25px;
+}
+
 #preloader {
     position:fixed;
     top:0;
@@ -26,8 +35,6 @@ body {
     background-position:center;
     margin:-100px 0 0 -100px; /* is width and height divided by two */
 }
-
-
 
 /* main page */
 body {
