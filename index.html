@@ -38,6 +38,20 @@
     //]]>
 </script>
 
+<script type ="text/javascript">
+
+  $(document).ready(function() {
+    // set splash image position on load
+		var img = document.getElementById('splashImage'); 		 
+		var height = img.clientHeight;
+		var quarterHeight = Math.ceil(height / 4);
+		console.log("quarterHeight: " + quarterHeight);
+		$("#splash_image").css("padding-top", quarterHeight + "px");
+
+   });
+
+</script>
+
 
 <body>
 <!-- Preloader -->
@@ -89,12 +103,7 @@
 		// hide feature image
 			$(".featureImage").hide();
 
-		// set splash image position on load
-		var img = document.getElementById('splashImage'); 		 
-		var height = img.clientHeight;
-		var quarterHeight = Math.ceil(height / 4);
-		console.log("quarterHeight: " + quarterHeight);
-		$("#splash_image").css("padding-top", quarterHeight + "px");
+		
 
 		// also reset splash image position on resize
 		$( window ).resize(function() {
