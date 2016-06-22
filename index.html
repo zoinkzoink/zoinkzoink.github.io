@@ -30,16 +30,16 @@
 <!-- Preloader -->
 <script type="text/javascript">
     //<![CDATA[
-        $(window).load(function() { // makes sure the whole site is loaded
+        //$(window).load(function() { // makes sure the whole site is loaded
+ $(document).ready(function() {
 
 
-        	   
   var img = document.getElementById('splashImage');  
 			var height = img.clientHeight;
 			var quarterHeight = Math.ceil(height / 4);
 			console.log("quarterHeight: " + quarterHeight);
 			$("#splash_image").css("padding-top", quarterHeight + "px");
-        	
+
             $('#status').fadeOut(); // will first fade out the loading animation
             $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
             $('body').delay(350).css({'overflow':'visible'});
@@ -117,10 +117,7 @@
 
 
 
-  $(document).ready(function() {
- 
-
-   });
+  
 
 		</script>
 
