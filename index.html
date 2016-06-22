@@ -34,23 +34,18 @@
             $('#status').fadeOut(); // will first fade out the loading animation
             $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
             $('body').delay(350).css({'overflow':'visible'});
-        })
-    //]]>
-</script>
-
-<script type ="text/javascript">
-
-  $(document).ready(function() {
-    // set splash image position on load
+               // set splash image position on load
 		var img = document.getElementById('splashImage'); 		 
 		var height = img.clientHeight;
 		var quarterHeight = Math.ceil(height / 4);
 		console.log("quarterHeight: " + quarterHeight);
 		$("#splash_image").css("padding-top", quarterHeight + "px");
 
-   });
-
+        })
+    //]]>
 </script>
+
+ 
 
 
 <body>
