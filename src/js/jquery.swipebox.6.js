@@ -57,7 +57,7 @@
 			</div>';
 
 
-		console.log("winWidth: " + winWidth);
+		//console.log("winWidth: " + winWidth);
 
 
 		plugin.settings = {};
@@ -258,16 +258,16 @@
 					$this.setDim();
 					// reset winWidth
 					winWidth = window.innerWidth ? window.innerWidth : $( window ).width();
-					console.log("winWidth reset to: " + winWidth);
+					//console.log("winWidth reset to: " + winWidth);
 					
 					if (winWidth < plugin.settings.maxWidthForCaptions) {
 				       $( '#swipebox-top-bar' ).hide();
-				       console.log("hiding caption");
+				       //console.log("hiding caption");
 					};
 
 					if (winWidth >= plugin.settings.maxWidthForCaptions) {
 				       $( '#swipebox-top-bar' ).show();
-				       console.log("re-adding caption");
+				       //console.log("re-adding caption");
 					};
 
 				} ).resize();
@@ -740,6 +740,13 @@
 					title = elements[ index ].title;
 				}
 
+				//console.log("current title: " + title);
+
+				if ( title == "undefined" ) {
+					// console.log("title undefined.  setting to blank.")
+					title = "";
+				}
+
  
 				if ( title ) {
 					// I added:		
@@ -747,7 +754,7 @@
 
 					if (winWidth > plugin.settings.maxWidthForCaptions) {
 						// show it only if at certain width
-						console.log("winWidth > 1100; adding title");
+						//console.log("winWidth > 1100; adding title");
 						$( '#swipebox-top-bar' ).show();
 						
 					}
