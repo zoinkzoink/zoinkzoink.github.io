@@ -5,27 +5,14 @@ body {
 
 /* Preloader */
 
-#splashImage {
+#splash_image {
 	width:100%; 
 	max-width:55em;
- 	padding-left:7px;
-	margin: auto;
+	margin:auto;
+	padding-left:7px;
 	padding-right:16px;
- 
- 	position: relative;
-   	transform: translateY(42%);
-  	-webkit-transform: translateY(42%);
-  	-ms-transform: translateY(42%)
-	 
-	padding-top:0px;
+	padding-top:25px;
 }
-
-.container {
-		margin-top:0px;
-		padding-top:0px;
-		width:100%;
-}
-
 
 #preloader {
     position:fixed;
@@ -75,7 +62,10 @@ body {
 		margin:0px auto;
 }
 	
-
+.container {
+	margin-top:63px;
+	padding-top:1px;
+}
 
 .mainTitle {
 	color:#665d5d;
@@ -218,25 +208,13 @@ input[type=checkbox]: ~ #menu{
  	}*/
 
  	#splash_image {
-		width:100%; 
- 		
-		padding-left:7px;
-		padding-right:7px;
- 		position: relative;
-   		transform: translateY(51%);
-  		-webkit-transform: translateY(51%);
-  		-ms-transform: translateY(51%);
-		max-width:55em;	 
+	width:100%; 
+	max-width:55em;
+	margin:auto;
+	padding-left:7px;
+	padding-right:7px;
+	padding-top:25px;
 	}
-
-	.container {
-		position: relative;
-   		transform: translateY(51%);
-  		-webkit-transform: translateY(51%);
-  		-ms-transform: translateY(51%);
-		width:100%;
-	}
-
 
 	/*Make dropdown links appear inline*/
 	.menuHolder ul {

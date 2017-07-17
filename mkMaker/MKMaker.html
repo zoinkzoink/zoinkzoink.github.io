@@ -1,0 +1,291 @@
+
+<meta http-equiv='Content-type' content='text/html; charset=utf-8' /><script src="jquery-1.9.1.min.js"></script>
+<script src="mootools-core-1.4.5-full-nocompat-yc.js"></script>
+<script src="jquery.htmlClean.min.js"></script>
+
+
+<script type ="text/javascript">
+
+  $(document).ready(function() {
+    
+    // set demo values
+    $("#URLStem").val("images/images_large");
+    $("#inputText").val("");
+
+   });
+
+</script>
+
+    <style type="text/css">
+  .instructions {
+    font-family: Georgia;
+    font-size:14px;
+  }
+
+    .uiText {
+    font-family: Georgia;
+    font-size:14px;
+  }
+</style>
+
+<div class="finalCodeContainer">
+   <table width="1300px">
+    <tr>
+      <td valign="top" width="600px">
+        <!--
+        <div class="instructions" style="width:600px">
+           Image directory:
+          
+           <br>
+          <textarea style="height:20px;width:600px" id="URLStem"></textarea><br>
+      <br>
+    -->
+
+        </div>
+        <div class="instructions">
+        Assemble your images and name them 1.jpg, 2.jpg... x.jpg -- however many you want to use.<br>
+        Enter the caption information in the text box below.
+        Each caption must have four lines:<br><br>
+        Title<br>
+        Materials<br>
+        Dimensions<br>
+        Date<br>
+        <br>
+        For images with no caption, use one line with only an asterisk (*) in it.<br><br>
+        
+
+          For example, copy the text from "caption.data.parsed.txt" (original captions) and paste below.<br>
+          When ready, click "Go" to generate a new sculpture gallery page.<br>
+        </div>
+        <textarea style="height:400px;width:600px" id="inputText"></textarea><br>
+    
+       
+     
+         <div id="buttonHolder">
+          <button id="doIt" onclick="doIt2();" style="width:600px">Go</button>
+        <br>
+        </div>  
+      </td>
+      <td valign="top" width="600px">
+
+         <div id="secondPhase" >
+          <textarea style="width:600px;height:100px" id="saveAndLoadArea" hidden></textarea>
+          <div class="uiText">
+           Final code (copy all, paste into Notepad, and save as sculpture.html):
+        </div>
+          <textarea style="width:600px;height:592px" id="finalCode" onmouseover="javascript:this.focus();this.select();"></textarea><br><br>
+         
+            
+  
+         </div>
+      </td>
+      <td valign="top" width="650px">
+        <br>
+        <div class="instructions">
+        <div id="temp" hidden> Preview:<br></div>
+      </div>
+        <table width="650px">
+          <tr>
+            <td valign="top">
+        <div id="finalCodePreview" style="width:960px;"></div><br>
+      </td>
+    
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+ 
+ </div>
+
+<script type="text/javascript">
+
+function resetEverything() {
+  location.reload();
+}
+
+function clearCaptions() {
+
+  $("#inputText").val("");
+}
+
+
+//global vars
+
+numberOfImages = 0;
+numberOfTableImages = 0;
+
+
+function doIt2() {
+
+  var HTMLStub = '<div class="everything"><!DOCTYPE html><html><head><title>Mike Kammerer</title> <meta name="keywords" content="art, cells, fossils, lamination, layers, plywood, sculpture, structure, wood"/> <meta name="description" content="Artist living in Victoria, British Columbia."/> <meta content="text/html; charset=utf-8" http-equiv="content-type"> <meta name="viewport" content="width=device-width,initial-scale=1.0"> <link rel="icon" href="images/favicon.ico" type="image/x-icon" /> <link rel="stylesheet" href="src/css/swipebox.2.css"> <link rel="stylesheet" href="src/css/myCss.css">  <!-- Masonry css --> <link rel="stylesheet" type="text/css" href="src/css/default.css" /> <link rel="stylesheet" type="text/css" href="src/css/component.css" /> <link href="https://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css"> <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet" type="text/css"><!-- Masonry scripts --></head><!-- Preloader --><body><!-- Preloader --><div id="preloader"><div id="status">&nbsp;</div> </div><div class="featureImage"> <img src="images/featureImage.jpg"></div><div class="header" > <div id="headerWrangler">  <a href="index.html"><div class="mainTitle">M<span class="subTitle">ike</span>&nbsp;K<span class="subTitle">ammerer</span></div></a> <div class="menuHolder"><label for="show-menu" class="show-menu"></label> <input type="checkbox" id="show-menu" role="button"><ul id="menu" class="smallMenuText"><li><a href="#">Sculpture</a></li><li><a href="information.html">Information</a></li><li><a href="contact.html">Contact</a></li></ul></div></div></div><div class="container"><ul class="grid effect-1" id="grid"></ul></div></body></html></div>';
+
+  var HTMLStubAsObject = $(HTMLStub);
+
+  // UI changes on click
+  $("#finalCode").show();
+  //$("#inputText").hide();
+  //$("#secondPhase").show();
+  //$("#doIt").hide();
+  //$(".instructions").hide();
+  //$("#buttonHolder").hide();
+
+  // proceed
+  var inputContents = $("#inputText").val();
+  var lines = inputContents.split('\n');
+
+  console.log("lines: " + lines);
+  console.log("line length: " + lines.length);
+
+
+  // processing goes here
+  var generatedCaptionData = [];
+
+  for (i=0; i<lines.length; i++) {
+
+    // check for empty captions
+     if ( lines[i].toString() == "*") {
+        // found an empty caption
+        console.log("Empty caption found.");
+        // push blank caption
+        generatedCaptionData.push(null);
+    
+    }
+
+    else {
+
+      var sculptureTitle = lines[i];
+      var sculptureMaterials = lines[i+1];
+      var sculptureDimensions = lines[i+2];
+      var sculptureDate = lines[i+3];
+ 
+
+      var consolidatedEntry = '"' + sculptureTitle + '\<br>' + '<span class=&quot;top-bar-subtitle&quot;>' + sculptureMaterials + '\<br>' + sculptureDimensions + '\<br>' + sculptureDate + '<\/span>"';
+
+      generatedCaptionData.push(consolidatedEntry);
+
+      //jump ahead
+      i = i + 3;
+      
+    }
+  }
+
+console.log("generatedCaptionData: " + generatedCaptionData);
+var totalImages = generatedCaptionData.length;
+console.log("There are " + totalImages + " images.");
+
+
+// caption data ready
+// need to plug the totalImages number into the algorithm
+
+var generatedScript = '\nvar temp = "<li class=&quot;shown&quot;><a href=&quot;images/images_large/{index}.jpg&quot; class=&quot;swipebox&quot; title2=&quot;{myCaption}&quot;><img src=&quot;images/images_large/{index}.jpg&quot;></a></li>"; var w = 1, h = 1, html = "", limitItem = ' + totalImages + '; for (var i = 0; i < limitItem; ++i) { html += temp.replace(/\{index}/g,i+1).replace(/\{myCaption\}/g,captionData[i]); } $("#grid").html(html); $(".featureImage").hide(); new AnimOnScroll( document.getElementById( "grid" ), { minDuration : 0.4, maxDuration : 0.7, viewportFactor : 0.2} );<\/script><script type="text/javascript">( function( $ ) { $( ".swipebox" ).swipebox( {loopAtEnd: true, loopAtStart: true, maxWidthForCaptions: 900});} )( jQuery );<\/script></body></html>';
+
+var quotesTemp = generatedScript.replace(/\&quot;/g,"'");
+
+var justCaptionData = '<script type="text/javascript">var captionData = [' + generatedCaptionData + ']'; 
+
+var betterQuotes = justCaptionData + quotesTemp;
+
+console.log("betterQuotes: " + betterQuotes);
+console.log("generatedScript: " + generatedScript);
+// end of processing
+
+// build final code
+
+  var headerText = "<!DOCTYPE html><html><head>";
+  var headerScripts = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"><\/script><script src="src/js/jquery.swipebox.6.js"><\/script><!-- Masonry scripts --><script src="src/js/modernizr.custom.js"><\/script><script src="src/js/masonry.pkgd.min.js"><\/script><script src="src/js/imagesloaded.js"><\/script><script src="src/js/classie.js"><\/script><script src="src/js/AnimOnScroll.js"><\/script>';
+
+  var preLoaderScript = '</head><script type="text/javascript">$(window).load(function() { $("#status").fadeOut(); $("#preloader").delay(350).fadeOut("slow"); $("body").delay(350).css({"overflow":"visible"});})<\/script><body>';
+
+  console.log("headerScripts: " + headerScripts);
+
+  var rawCode = headerText + headerScripts + preLoaderScript +  HTMLStubAsObject.html() + betterQuotes;  
+
+ 
+ var finalCode = $.htmlClean((rawCode), {format:true, formatIndent:1, allowedAttributes:[["style"], ["script"], ["target"], ["width"], ["scrolling"], ["frameborder"], ["marginwidth"], ["marginheight"], ["iframe"], ["class"], ["id"], ["src"], ["valign"], ["cellpadding"], ["cellspacing"]],         removeTags: ["basefont", "center", "dir", "font", "frame", "frameset", "isindex", "menu", "noframes", "s", "strike", "u"]}  );
+
+ console.log("raw code: " + rawCode);
+ console.log("final code: " + finalCode);
+
+  // display preview + final code
+
+  $("#finalCodePreview").html("");
+  $("#finalCode").text(rawCode);
+
+
+}
+
+
+// misc functions
+
+function isOdd(num) { return num % 2;}
+
+
+function turnArrayToLowercase(workingWith) {
+
+  var arrayAsLowerCase = [];
+
+  for (i=0;i<workingWith.length;i++) {
+    arrayAsLowerCase.push( workingWith[i].toLowerCase() ) ;
+  } 
+
+  return arrayAsLowerCase;
+
+}
+
+// getIndexes: return array index numbers of partial searches within arrays. 
+// usage: array.getIndexes("charactersToSearchFor");  
+(function() {
+    Array.implement({
+        getIndexes: function(what) {
+            var indexes = [];
+            this.each(function(el, index) {
+                if (el.indexOf(what) != -1)
+                    indexes.push(index);
+            });
+            return indexes;
+        }
+    });
+})();
+
+
+
+// replaceAll
+String.prototype.replaceAll = function(search, replace)
+{
+    //if replace is null, return original string otherwise it will
+    //replace search string with 'undefined'.
+    if(!replace) 
+        return this;
+
+    return this.replace(new RegExp('[' + search + ']', 'g'), replace);
+};
+
+
+// event listener for switching table columns
+
+ $('#finalCodePreview').on('click', 'td', function() { 
+
+      var contents = $(this).text();
+
+  
+          var currentContents = $(this).html();
+          var contentsToSwitchWith = $(this).closest("td").next().html();
+
+          $(this).html(contentsToSwitchWith);
+          $(this).closest("td").next().html(currentContents);
+
+
+          updateFinalCode();
+  
+}); 
+
+
+ function updateFinalCode() {
+
+
+  var currentCode = $("#finalCodePreview").html();
+  $("#finalCode").text(currentCode);
+
+ };
+</script>
